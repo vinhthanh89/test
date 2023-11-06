@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Nhập vào hai số a và b (a &lt b):</h1>
+    <form action="">
+        a: <input type="number" id="Num1"><br>
+        b: <input type="number" id="Num2"><br>
+        <button type="button" onclick="myFunction()"> Tính tổng số nguyên tố </button>
+        <p id="demo"></p>
+        <p id="demo2"></p>
+    </form>
+
+    <script>
+        function myFunction() {
+            let demo = document.getElementById('demo')
+            let demo2 = document.getElementById('demo2')
+            let number1 = Number(document.getElementById('Num1').value)
+            let number2 = Number(document.getElementById('Num2').value)
+            // phải convert giá trị của input về dạng number .
+            // tạo array temple để duyệt các số nguyên tố vào mảng , push số nguyên tố vào mảng khi là số nguyên tố và show lên web .
+            if (number1 < number2) {
+                let sum = 0;
+                let temple = [];
+                for (let i = number1; i <= number2; i++) {
+                    let isPrime = true;
+                    for (let j = 2; j < i; j++) {
+                        if (i % j === 0) {
+                            isPrime = false;
+                            break;
+                        }
+                    }
+                    if (isPrime) {
+                        sum += i;
+                        temple.push(i);
+                    }
+                }
+                demo2.innerHTML = `Các số nguyên tố từ ${number1} tới ${number2} là ${temple}`
+                demo.innerHTML = `Tổng của các số nguyên tố từ ${number1} tới ${number2} là ${sum}`
+            } else {
+                demo.innerHTML = "Hãy nhập số a < b"
+            }
+        }
+    </script>
+</body>
+
+</html>
